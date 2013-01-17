@@ -19,14 +19,6 @@ module Vexile
       @target = klass.new
       load_params value
     end
-
-    def load_params hash
-      hash.each do |key, value|
-        if self.respond_to? "#{key}="
-          self.__send__("#{key}=", value)
-        end
-      end
-    end
   end
 
   module DSL
@@ -37,6 +29,14 @@ module Vexile
       Vexile.klasses ||= []
       Vexile.klasses << self
       include ActiveModel::Validations
+
+      def load_params hash
+        hash.each do |key, value|
+          if self.respond_to? "#{key}="
+            self.__send__("#{key}=", value)
+          end
+        end
+      end
     end
 
     module ClassMethods
