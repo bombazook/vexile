@@ -19,6 +19,7 @@ describe Vexile do
       attr_accessor :p5, :p6
       validates :bs, :size => {:min => 1, :max => 2}, :recursive => true
       has_many :bs
+      has_one :a
     end
 
     class Test
@@ -77,5 +78,21 @@ describe Vexile do
       t.c = {:t => "some_value"}
     end.to_not raise_error
     t.c.class.should == Namespaced::C
+  end
+
+  it "should save original loaded part" do
+    t = Test.new
+    t.c = {:p5 => 1, :p6 => 2, :bs => [{:p3 => "test1", :p4 => "test2"}]}
+    t.c.__source__.should == {:p5 => 1, :p6 => 2, :bs => [{:p3 => "test1", :p4 => "test2"}]}
+    t.c.bs.first.__source__.should == {:p3 => "test1", :p4 => "test2"}
+  end
+
+  it "should not raise NoMethodError while non-hash object loaded (just not initialize attribs)" do
+    t = Test.new
+    expect{ t.c = "test" }.to_not raise_error
+    expect{ t.valid? }.to_not raise_error
+    expect{ t.c = {:p5 => 1, :p6 => 2, :a => "test"} }.to_not raise_error
+    t.c.__source__.should == {:p5 => 1, :p6 => 2, :a => "test"}
+    t.c.a.__source__.should == "test"
   end
 end
