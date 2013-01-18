@@ -13,12 +13,10 @@ module Vexile
   end
 
   class VexileProxy < Proxy
-    attr_reader :__source__
     def __setobj__ value
       klass = @options[:owner_class].vexile_const_lookup(@options[:class_name])
       raise "#{@options[:class_name]} is not a vexile class" unless klass
       @target = klass.new
-      @__source__ = value
       load_params value
     end
   end
@@ -28,6 +26,7 @@ module Vexile
     extend ActiveSupport::Concern
 
     included do
+      attr_reader :__source__
       Vexile.klasses ||= []
       Vexile.klasses << self
       include ActiveModel::Validations
@@ -40,6 +39,7 @@ module Vexile
             end
           end
         end
+        @__source__ = hsh
       end
     end
 
