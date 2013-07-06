@@ -16,8 +16,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Vexile::VERSION
 
-  gem.add_dependency 'activemodel', '~> 3'
-  gem.add_dependency 'activesupport', '~> 3'
+  gem.add_dependency 'activemodel', '>= 3'
+  gem.add_dependency 'activesupport', '>= 3'
   gem.add_dependency 'bzproxies', '>= 0.1.11'
   gem.add_dependency 'addressable'
   gem.add_development_dependency "rspec"

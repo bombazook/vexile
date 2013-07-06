@@ -11,7 +11,7 @@ describe Vexile do
     class B
       include Vexile::DSL
       attr_accessor :p3, :p4
-      validates :p4, :format => /^test\d+$/
+      validates :p4, :format => /\Atest\d+\z/
     end
 
     class C
