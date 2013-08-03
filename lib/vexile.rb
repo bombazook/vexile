@@ -45,9 +45,7 @@ module Vexile
 
     module ClassMethods
       def vexile_const_lookup const
-        namespaced = [self, self.parents].flatten.map{|i| [i, const.to_s].join "::"}
-                      .push(const.to_s)
-                      .sort{|a,b| b.length <=> a.length}
+        namespaced = [self, self.parents].flatten.map{|i| [i, const.to_s].join "::"}.push(const.to_s).sort{|a,b| b.length <=> a.length}
         vexile_class = namespaced.detect{|i| Vexile.klasses.map(&:name).include?(i)}
         vexile_class && vexile_class.constantize
       end
