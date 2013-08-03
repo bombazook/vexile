@@ -1,6 +1,7 @@
 # Vexile
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/bombazook/vexile.png)](https://travis-ci.org/bombazook/vexile)
+
 
 ## Installation
 
