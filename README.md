@@ -1,7 +1,22 @@
 # Vexile
 
+Simple dsl for multilevel hash validations
+
+---
+
 [![Build Status](https://travis-ci.org/bombazook/vexile.png)](https://travis-ci.org/bombazook/vexile)
 
+Tested on:
+  - 2.0.0
+  - 1.9.3
+  - 1.9.2
+  - 1.8.7
+  - ree
+  - jruby-head
+  - jruby-18mode
+  - jruby-19mode
+  - rbx-18mode
+  - rbx-19mode
 
 ## Installation
 
