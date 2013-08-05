@@ -8,6 +8,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Auto generating ActiveModel validations for hashes"
   gem.summary       = "ActiveModel validations for hashes"
   gem.homepage      = "http://malstream.info"
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
