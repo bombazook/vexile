@@ -4,10 +4,16 @@ class RecursiveValidator < ActiveModel::EachValidator
     if param_proxy
       if param_proxy.respond_to? :each
         param_proxy.each do |sub_proxy|
-          record.errors.add attribute, "is invalid in #{sub_proxy} : #{sub_proxy.errors.messages}" if !sub_proxy.valid?
+          if !sub_proxy.valid?
+            message = I18n.translate('errors.messages.recursively_invalid', :in => sub_proxy, :messages => sub_proxy.errors.messages)
+            record.errors.add attribute, message
+          end
         end
       else
-        record.errors.add attribute, "is invalid in #{param_proxy} : #{param_proxy.errors.messages}" if !param_proxy.valid?
+        if !param_proxy.valid?
+          message = I18n.translate('errors.messages.recursively_invalid', :in => param_proxy, :messages => param_proxy.errors.messages)
+          record.errors.add attribute, message
+        end
       end
     end
   end

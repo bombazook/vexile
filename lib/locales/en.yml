@@ -1,0 +1,16 @@
+en:
+  errors:
+    messages:
+      invalid_url: invalid url
+      incorrect_count: 
+        one: should have exaclty %{count} elements
+        many: should have exactly %{count} elements
+      too_few:
+        one: should have at least %{count} element
+        many: should have at least %{count} elements
+      too_many:
+        one: should have at most %{count} element
+        many: should have at most %{count} elements
+      uncountable: value is uncountable
+      recursivelu_invalid: "is invalid in %{in} : %{messages}"
+

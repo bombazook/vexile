@@ -7,7 +7,7 @@ class UrlValidator < ActiveModel::EachValidator
         raise ::Addressable::URI::InvalidURIError
       end
     rescue ::Addressable::URI::InvalidURIError
-      record.errors[attribute] << "Invalid URL"
+      record.errors[attribute] << I18n.translate('errors.messages.invalid_url')
     end
   end
 end
